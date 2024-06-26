@@ -51,7 +51,7 @@ class GlifKernel(Kernel):
                 if r.value:
                     self.handle_items(r.value)
                 else:
-                    self.html_response(f'<span class="glif-stderr">{html_escape(r.logs)}</span>')
+                    self.html_response(f'<div class="glif-stderr">{html_escape(r.logs)}</div>')
 
         self.myexecutioncount += 1
         return {'status': 'ok',
@@ -73,8 +73,8 @@ class GlifKernel(Kernel):
             cur_repr = items.items[0].currentRepr
         if not all(i.currentRepr == cur_repr for i in items.items):
             self.html_response(
-                f'<span class="glif-stderr">Internal error:'
-                f'Inconsistent output representations: {set([i.currentRepr for i in items.items])}</span>')
+                f'<div class="glif-stderr">Internal error:'
+                f'Inconsistent output representations: {set([i.currentRepr for i in items.items])}</div>')
         if cur_repr in {Repr.GRAPH_DOT, Repr.GRAPH_SVG}:
             self.show_graphs(items)
         else:
@@ -113,7 +113,7 @@ class GlifKernel(Kernel):
                     item.content[Repr.GRAPH_SVG] = r.value
                 else:
                     self.html_response(
-                        f'<span class="glif-stderr">Failed to produce graph:<br/>{html_escape(r.logs)}</span>')
+                        f'<div class="glif-stderr">Failed to produce graph:<br/>{html_escape(r.logs)}</div>')
                     return
             image.value = item.content[Repr.GRAPH_SVG]
 
