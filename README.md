@@ -16,22 +16,22 @@ TODO
 If you have [docker](https://www.docker.com/) installed,
 you should be able to simply run
 ```shell
-docker run -p 8888:8888 jfschaefer/glif:2.0.1
+docker run -p 8888:8888 jfschaefer/glif:2.1.0
 ```
 Note that running the command again will create a new container,
 i.e. your changes won't persist.
 However, you can "link" (mount) a folder of your file system
 into the container, which will allow you to keep files stored there:
 ```shell
-docker run -v "/path/to/my/folder:/home/worker/glifkernel/notebooks/persistent" -p 8888:8888 jfschaefer/glif:2.0.1
+docker run -v "/path/to/my/folder:/home/worker/glifkernel/notebooks/persistent" -p 8888:8888 jfschaefer/glif:2.1.0
 ```
 `/path/to/my/folder` should be a folder on your local file system.
 It will be synchronized with the `persistent` folder.
 
 ## Installing the Kernel locally
-Installing the kernel directly on your machine has several advantages and is recommended
-for serious users.
-Some of the reasons are:
+The local installation is a bit tricky as GLIF combines multiple systems, all of which have to be installed.
+It is therefore not recommended for casual users.
+However, a local installation has certain advantages:
 * You can develop components in specialized IDEs (e.g. for MMT) rather than in the notebooks,
     which is particularly useful for larger projects
 * You can work with your own build of GF/MMT/ELPI
